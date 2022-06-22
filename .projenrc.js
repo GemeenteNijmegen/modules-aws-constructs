@@ -14,6 +14,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   release: true,
   releaseToNpm: true,
   npmAccess: NpmAccess.PUBLIC,
-  bundledDeps: ["@types/jest@27.4.1"], // TODO: work around https://github.com/projen/projen/issues/1941
+  bundledDeps: ['@types/jest@27.4.1'], // TODO: work around https://github.com/projen/projen/issues/1941
 });
 project.synth();
