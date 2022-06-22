@@ -1,11 +1,24 @@
 const { typescript } = require('projen');
-const project = new typescript.TypeScriptProject({
-  defaultReleaseBranch: 'main',
-  name: 'modules-aws-constructs',
+const { NpmAccess } = require('projen/lib/javascript');
 
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
+const projectName = '@gemeentenijmegen/aws-constructs';
+
+const project = new typescript.TypeScriptProject({
+  name: projectName,
+  license: 'EUPL-1.2',
+  description: 'AWS CKD constructs for Gemeente Nijmegen',
+  defaultReleaseBranch: 'main',
+  packageName: projectName,
+  release: true,
+  releaseToNpm: true,
+  npmAccess: NpmAccess.PUBLIC,
+  deps: [
+    'aws-cdk-lib',
+    'constructs',
+  ],
+  peerDeps: [
+    'aws-cdk-lib',
+    'constructs',
+  ],
 });
 project.synth();
