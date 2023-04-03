@@ -15,9 +15,9 @@ class DummyStack extends Stack {
 }
 
 
-test('Constrcution of permission broundry', () => {
+test('Constrcution of permission boundary', () => {
   const app = new App();
-  const stack = new DummyStack(app, 'dumm-stack');
+  const stack = new DummyStack(app, 'dummy-stack');
   Aspects.of(stack).add(new PermissionsBoundaryAspect('/', 'landingzone-workload-permissions-boundary'));
 
   const template = Template.fromStack(stack);
