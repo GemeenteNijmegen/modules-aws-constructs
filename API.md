@@ -20,7 +20,7 @@ This aspect will scan all roles within the given scope and will attach the right
 ```typescript
 import { PermissionsBoundaryAspect } from '@gemeentenijmegen/aws-constructs'
 
-new PermissionsBoundaryAspect(rolePath: string, rolePermissionBoundary: string)
+new PermissionsBoundaryAspect(rolePath?: string, rolePermissionBoundary?: string)
 ```
 
 | **Name** | **Type** | **Description** |
@@ -30,7 +30,7 @@ new PermissionsBoundaryAspect(rolePath: string, rolePermissionBoundary: string)
 
 ---
 
-##### `rolePath`<sup>Required</sup> <a name="rolePath" id="@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect.Initializer.parameter.rolePath"></a>
+##### `rolePath`<sup>Optional</sup> <a name="rolePath" id="@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect.Initializer.parameter.rolePath"></a>
 
 - *Type:* string
 
@@ -38,7 +38,7 @@ the role path to attach to newly created roles.
 
 ---
 
-##### `rolePermissionBoundary`<sup>Required</sup> <a name="rolePermissionBoundary" id="@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect.Initializer.parameter.rolePermissionBoundary"></a>
+##### `rolePermissionBoundary`<sup>Optional</sup> <a name="rolePermissionBoundary" id="@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect.Initializer.parameter.rolePermissionBoundary"></a>
 
 - *Type:* string
 
