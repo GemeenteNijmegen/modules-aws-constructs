@@ -25,9 +25,9 @@ export class PermissionsBoundaryAspect implements IAspect {
    * @param rolePath - the role path to attach to newly created roles.
    * @param rolePermissionBoundary - the permission boundary to attach to newly created roles.
    */
-  public constructor(rolePath: string, rolePermissionBoundary: string) {
-    this.rolePath = rolePath;
-    this.rolePermissionBoundary = rolePermissionBoundary;
+  public constructor(rolePath?: string, rolePermissionBoundary?: string) {
+    this.rolePath = rolePath ?? '/';
+    this.rolePermissionBoundary = rolePermissionBoundary ?? 'landingzone-workload-permissions-boundary';
   }
 
   public visit(node: IConstruct): void {
