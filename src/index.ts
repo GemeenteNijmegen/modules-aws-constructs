@@ -1,1 +1,1 @@
-export * from './PermissionsBoundaryAspect'
+export * from './PermissionsBoundaryAspect';
