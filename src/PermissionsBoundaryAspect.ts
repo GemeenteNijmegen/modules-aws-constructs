@@ -1,5 +1,4 @@
-import { IAspect, Stack } from 'aws-cdk-lib';
-import { CfnRole, Role } from 'aws-cdk-lib/aws-iam';
+import { CfnResource, IAspect, Stack } from 'aws-cdk-lib';
 import { IConstruct } from 'constructs';
 
 /**
@@ -32,20 +31,21 @@ export class PermissionsBoundaryAspect implements IAspect {
 
   public visit(node: IConstruct): void {
 
-    if (node instanceof Role) {
+    if (node instanceof CfnResource && node.cfnResourceType == 'AWS::IAM::Role') {
       const stack = Stack.of(node);
-      const roleResource = node.node.findChild('Resource') as CfnRole;
-      // set the path if it is provided
-      if (this.rolePath) {
-        roleResource.addPropertyOverride('Path', this.rolePath);
-      }
-      // set the permission boundary if it is provided
-      if (this.rolePermissionBoundary && !this.rolePermissionBoundary.startsWith('arn:aws:iam')) {
-        roleResource.addPropertyOverride('PermissionsBoundary', `arn:aws:iam::${stack.account}:policy/${this.rolePermissionBoundary}`);
-      }
+      this.addPermissionBoundary(node, stack);
     }
+  }
 
+  addPermissionBoundary(cfnResource: CfnResource, stack: Stack) {
+    // set the path if it is provided
+    if (this.rolePath) {
+      cfnResource.addPropertyOverride('Path', this.rolePath);
+    }
+    // set the permission boundary if it is provided
+    if (this.rolePermissionBoundary && !this.rolePermissionBoundary.startsWith('arn:aws:iam')) {
+      cfnResource.addPropertyOverride('PermissionsBoundary', `arn:aws:iam::${stack.account}:policy/${this.rolePermissionBoundary}`);
+    }
   }
 }
-
 
