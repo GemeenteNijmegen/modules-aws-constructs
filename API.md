@@ -50,7 +50,26 @@ the permission boundary to attach to newly created roles.
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect.addPermissionBoundary">addPermissionBoundary</a></code> | *No description.* |
 | <code><a href="#@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect.visit">visit</a></code> | All aspects can visit an IConstruct. |
+
+---
+
+##### `addPermissionBoundary` <a name="addPermissionBoundary" id="@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect.addPermissionBoundary"></a>
+
+```typescript
+public addPermissionBoundary(cfnResource: CfnResource, stack: Stack): void
+```
+
+###### `cfnResource`<sup>Required</sup> <a name="cfnResource" id="@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect.addPermissionBoundary.parameter.cfnResource"></a>
+
+- *Type:* aws-cdk-lib.CfnResource
+
+---
+
+###### `stack`<sup>Required</sup> <a name="stack" id="@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect.addPermissionBoundary.parameter.stack"></a>
+
+- *Type:* aws-cdk-lib.Stack
 
 ---
 

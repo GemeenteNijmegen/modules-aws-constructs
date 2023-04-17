@@ -31,3 +31,5 @@ test('Constrcution of permission boundary', () => {
   });
 
 });
+
+// TODO add test with custom resource from custom resource provider in CDK
