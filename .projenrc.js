@@ -10,6 +10,11 @@ const project = new GemeenteNijmegenCdkLib({
   description: 'AWS CKD constructs for Gemeente Nijmegen',
   defaultReleaseBranch: 'main',
   packageName: projectName,
+  depsUpgradeOptions: {
+    workflowOptions: {
+      branches: ['main'],
+    },
+  },
   devDeps: [
     '@gemeentenijmegen/projen-project-type',
   ],
