@@ -6,6 +6,10 @@ import { Construct } from 'constructs';
 
 export interface DeadLetterQueueProps {
   /**
+   * Bring your own dead letter queue
+   */
+  readonly dlq?: Queue;
+  /**
    * Key to encrypt the queue
    */
   readonly kmsKey: Key;
