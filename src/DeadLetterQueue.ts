@@ -37,10 +37,14 @@ export class DeadLetterQueue extends Construct {
   constructor(scope: Construct, id: string, props: DeadLetterQueueProps) {
     super(scope, id);
 
-    this.dlq = new Queue(this, 'dlq', {
-      encryptionMasterKey: props.kmsKey,
-      retentionPeriod: props.retentionPeriod ?? Duration.days(14),
-    });
+    if (props.dlq) {
+      this.dlq = props.dlq;
+    } else {
+      this.dlq = new Queue(this, 'dlq', {
+        encryptionMasterKey: props.kmsKey,
+        retentionPeriod: props.retentionPeriod ?? Duration.days(14),
+      });
+    }
 
     if (props.alarm) {
       this.setupDlqAlarm(id, props);
