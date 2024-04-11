@@ -8,27 +8,27 @@ export interface DeadLetterQueueProps {
   /**
    * Key to encrypt the queue
    */
-  kmsKey: Key;
+  readonly kmsKey: Key;
   /**
    * Retention period
    * @default - 14 days
    */
-  retentionPeriod?: Duration;
+  readonly retentionPeriod?: Duration;
   /**
    * Setup alarm
    * @default true
    */
-  alarm?: boolean;
+  readonly alarm?: boolean;
   /**
    * Alarm Description
    * @default -
    */
-  alarmDescription?: string;
+  readonly alarmDescription?: string;
 }
 
 export class DeadLetterQueue extends Construct {
 
-  private readonly dlq;
+  private readonly dlq: Queue;
 
   constructor(scope: Construct, id: string, props: DeadLetterQueueProps) {
     super(scope, id);
