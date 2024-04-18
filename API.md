@@ -118,6 +118,105 @@ The tree node.
 ---
 
 
+### LamdaMonitoringAlarm <a name="LamdaMonitoringAlarm" id="@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm"></a>
+
+#### Initializers <a name="Initializers" id="@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.Initializer"></a>
+
+```typescript
+import { LamdaMonitoringAlarm } from '@gemeentenijmegen/aws-constructs'
+
+new LamdaMonitoringAlarm(scope: Construct, id: string, props: LamdbaMonitoringAlarmProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.Initializer.parameter.props">props</a></code> | <code><a href="#@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps">LamdbaMonitoringAlarmProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps">LamdbaMonitoringAlarmProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.isConstruct"></a>
+
+```typescript
+import { LamdaMonitoringAlarm } from '@gemeentenijmegen/aws-constructs'
+
+LamdaMonitoringAlarm.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@gemeentenijmegen/aws-constructs.LamdaMonitoringAlarm.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+
 ## Structs <a name="Structs" id="Structs"></a>
 
 ### DeadLetterQueueProps <a name="DeadLetterQueueProps" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps"></a>
@@ -202,6 +301,133 @@ public readonly retentionPeriod: Duration;
 - *Default:* 14 days
 
 Retention period.
+
+---
+
+### ErrorRateProps <a name="ErrorRateProps" id="@gemeentenijmegen/aws-constructs.ErrorRateProps"></a>
+
+Construct that easily adds basic error monitoring with an alarm to lambda's Only a lambda needed as property, all others are optional.
+
+The plan is to add other basic alarms in the future and add the criticality type when it is added to a library
+
+#### Initializer <a name="Initializer" id="@gemeentenijmegen/aws-constructs.ErrorRateProps.Initializer"></a>
+
+```typescript
+import { ErrorRateProps } from '@gemeentenijmegen/aws-constructs'
+
+const errorRateProps: ErrorRateProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.ErrorRateProps.property.alarmThreshold">alarmThreshold</a></code> | <code>number</code> | Alarm Threshold. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.ErrorRateProps.property.filterPattern">filterPattern</a></code> | <code>aws-cdk-lib.aws_logs.IFilterPattern</code> | The filterpattern used. |
+
+---
+
+##### `alarmThreshold`<sup>Optional</sup> <a name="alarmThreshold" id="@gemeentenijmegen/aws-constructs.ErrorRateProps.property.alarmThreshold"></a>
+
+```typescript
+public readonly alarmThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 5
+
+Alarm Threshold.
+
+---
+
+##### `filterPattern`<sup>Optional</sup> <a name="filterPattern" id="@gemeentenijmegen/aws-constructs.ErrorRateProps.property.filterPattern"></a>
+
+```typescript
+public readonly filterPattern: IFilterPattern;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.IFilterPattern
+- *Default:* FilterPattern.anyTerm('ERROR')
+
+The filterpattern used.
+
+---
+
+### LamdbaMonitoringAlarmProps <a name="LamdbaMonitoringAlarmProps" id="@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps"></a>
+
+#### Initializer <a name="Initializer" id="@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps.Initializer"></a>
+
+```typescript
+import { LamdbaMonitoringAlarmProps } from '@gemeentenijmegen/aws-constructs'
+
+const lamdbaMonitoringAlarmProps: LamdbaMonitoringAlarmProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps.property.lambda">lambda</a></code> | <code>aws-cdk-lib.aws_lambda.Function</code> | The lambda the metrics are added to. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps.property.criticality">criticality</a></code> | <code>string</code> | Criticality level. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps.property.errorRateProps">errorRateProps</a></code> | <code><a href="#@gemeentenijmegen/aws-constructs.ErrorRateProps">ErrorRateProps</a></code> | All the optional properties for the errorRateMetric and Alarm. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps.property.metricNameSpace">metricNameSpace</a></code> | <code>string</code> | Left empty, the id will be used to set the metricNameSpace base. |
+
+---
+
+##### `lambda`<sup>Required</sup> <a name="lambda" id="@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps.property.lambda"></a>
+
+```typescript
+public readonly lambda: Function;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Function
+
+The lambda the metrics are added to.
+
+---
+
+##### `criticality`<sup>Optional</sup> <a name="criticality" id="@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps.property.criticality"></a>
+
+```typescript
+public readonly criticality: string;
+```
+
+- *Type:* string
+- *Default:* 'low'
+
+Criticality level.
+
+---
+
+*Example*
+
+```typescript
+'low' | 'medium' | 'high' | 'critical'
+```
+
+
+##### `errorRateProps`<sup>Optional</sup> <a name="errorRateProps" id="@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps.property.errorRateProps"></a>
+
+```typescript
+public readonly errorRateProps: ErrorRateProps;
+```
+
+- *Type:* <a href="#@gemeentenijmegen/aws-constructs.ErrorRateProps">ErrorRateProps</a>
+
+All the optional properties for the errorRateMetric and Alarm.
+
+---
+
+##### `metricNameSpace`<sup>Optional</sup> <a name="metricNameSpace" id="@gemeentenijmegen/aws-constructs.LamdbaMonitoringAlarmProps.property.metricNameSpace"></a>
+
+```typescript
+public readonly metricNameSpace: string;
+```
+
+- *Type:* string
+- *Default:* id
+
+Left empty, the id will be used to set the metricNameSpace base.
 
 ---
 
