@@ -326,3 +326,19 @@ The role path to attach to newly created roles.
 
 
 
+## Lambda Monitoring Alarm
+
+AWS Construct meant to quickly add basic default alarms and metrics to lambda's. 
+Default error rate alarm added when the construct is used.
+Example Usage:
+
+```
+     new LamdaMonitoringAlarm(this, 'MonitoredLambdaIdName', {
+        lambda: mockLambdaFunction,
+        criticality: 'high',
+        metricNameSpace: 'CustomNameSpaceProjectName',
+        errorRateProps: {
+          alarmThreshold: 18,
+        },
+      });
+```
