@@ -83,17 +83,17 @@ test('Add alarm with custom properties to lambda', () => {
   const metric = template.findResources('AWS::Logs::MetricFilter');
   expect(Object.keys(alarms)).toHaveLength(1);
   expect(Object.keys(metric)).toHaveLength(1);
-  // Find Default Namespace
+  // Find custom Namespace based on property
   const findNameSpace = Object.values(alarms).find(
     (alarm) => alarm.Properties.Namespace === 'CustomNameSpaceProjectName/MonitoredLambdaCustom',
   );
   expect(findNameSpace).toBeTruthy();
-  //Find default threshold
+  //Find custom threshold based on property
   const findThreshold = Object.values(alarms).find(
     (alarm) => alarm.Properties.Threshold === 18,
   );
   expect(findThreshold).toBeTruthy();
-  //Find default criticality in alarmName
+  //Find criticality in alarmName based on property
   const findAlarmName = Object.values(alarms).find(
     (alarm) => alarm.Properties.AlarmName === 'increased-error-rate-MonitoredLambdaCustom-high-lvl',
   );
