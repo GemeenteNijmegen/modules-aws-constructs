@@ -15,34 +15,34 @@ export interface LamdbaMonitoringAlarmProps {
   /**
    * The lambda the metrics are added to
    */
-  lambda: lambda.Function;
+  readonly lambda: lambda.Function;
 
   /**
  * Criticality level
  * @example 'low' | 'medium' | 'high' | 'critical'
  * @default 'low'
  */
-  criticality?: 'low' | 'medium' | 'high' | 'critical';
+  readonly criticality?: 'low' | 'medium' | 'high' | 'critical';
 
   /**
  * Left empty, the id will be used to set the metricNameSpace base
  * @default id
  */
-  metricNameSpace?: string;
+  readonly metricNameSpace?: string;
   /**
    *  All the optional properties for the errorRateMetric and Alarm
    */
-  errorRateProps?: {
+  readonly errorRateProps?: {
     /**
      * The filterpattern used
      * @default FilterPattern.anyTerm('ERROR')
      */
-    filterPattern?: IFilterPattern;
+    readonly filterPattern?: IFilterPattern;
     /**
      * Alarm Threshold
      * @default 5
      */
-    alarmThreshold?: number;
+    readonly alarmThreshold?: number;
   };
 
 }
