@@ -11,6 +11,19 @@ import { Construct } from 'constructs';
  *
  * The plan is to add other basic alarms in the future and add the criticality type when it is added to a library
  */
+
+export interface ErrorRateProps {
+  /**
+   * The filterpattern used
+   * @default FilterPattern.anyTerm('ERROR')
+   */
+  readonly filterPattern?: IFilterPattern;
+  /**
+   * Alarm Threshold
+   * @default 5
+   */
+  readonly alarmThreshold?: number;
+}
 export interface LamdbaMonitoringAlarmProps {
   /**
    * The lambda the metrics are added to
@@ -32,19 +45,7 @@ export interface LamdbaMonitoringAlarmProps {
   /**
    *  All the optional properties for the errorRateMetric and Alarm
    */
-  readonly errorRateProps?: {
-    /**
-     * The filterpattern used
-     * @default FilterPattern.anyTerm('ERROR')
-     */
-    readonly filterPattern?: IFilterPattern;
-    /**
-     * Alarm Threshold
-     * @default 5
-     */
-    readonly alarmThreshold?: number;
-  };
-
+  readonly errorRateProps?: ErrorRateProps | undefined;
 }
 export class LamdaMonitoringAlarm extends Construct {
 
