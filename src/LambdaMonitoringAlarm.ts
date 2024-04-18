@@ -32,7 +32,7 @@ export interface LamdbaMonitoringAlarmProps {
   /**
    *  All the optional properties for the errorRateMetric and Alarm
    */
-  errorRateProps?: {
+  readonly errorRateProps?: {
     /**
      * The filterpattern used
      * @default FilterPattern.anyTerm('ERROR')
