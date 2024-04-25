@@ -2,7 +2,7 @@ import { Stack, App } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
-import { LamdaMonitoringAlarm } from '../src/LambdaMonitoringAlarm';
+import { LambdaMonitoringAlarm } from '../src/LambdaMonitoringAlarm';
 
 test('Add defaultalarm to lambda', () => {
 
@@ -19,7 +19,7 @@ test('Add defaultalarm to lambda', () => {
           };
         },
       } as any as lambda.Function;
-      new LamdaMonitoringAlarm(this, 'MonitoredLambda', {
+      new LambdaMonitoringAlarm(this, 'MonitoredLambda', {
         lambda: mockLambdaFunction,
       });
     }
@@ -65,7 +65,7 @@ test('Add alarm with custom properties to lambda', () => {
           };
         },
       } as any as lambda.Function;
-      new LamdaMonitoringAlarm(this, 'MonitoredLambdaCustom', {
+      new LambdaMonitoringAlarm(this, 'MonitoredLambdaCustom', {
         lambda: mockLambdaFunction,
         criticality: 'high',
         metricNameSpace: 'CustomNameSpaceProjectName',

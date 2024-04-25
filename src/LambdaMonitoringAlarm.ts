@@ -24,7 +24,7 @@ export interface ErrorRateProps {
    */
   readonly alarmThreshold?: number;
 }
-export interface LamdbaMonitoringAlarmProps {
+export interface LambdaMonitoringAlarmProps {
   /**
    * The lambda the metrics are added to
    */
@@ -47,9 +47,9 @@ export interface LamdbaMonitoringAlarmProps {
    */
   readonly errorRateProps?: ErrorRateProps | undefined;
 }
-export class LamdaMonitoringAlarm extends Construct {
+export class LambdaMonitoringAlarm extends Construct {
 
-  constructor(scope: Construct, id: string, props: LamdbaMonitoringAlarmProps ) {
+  constructor(scope: Construct, id: string, props: LambdaMonitoringAlarmProps ) {
     super(scope, id);
     this.addErrorRateMetric(id, props);
 
@@ -61,7 +61,7 @@ export class LamdaMonitoringAlarm extends Construct {
    *
    * @param filterPattern Pattern to filter by (default: containing ERROR)
    */
-  private addErrorRateMetric(id: string, props: LamdbaMonitoringAlarmProps) {
+  private addErrorRateMetric(id: string, props: LambdaMonitoringAlarmProps) {
     const metricNameBase = props.metricNameSpace ?? id;
     const errorMetricFilter = new MetricFilter(this, 'MetricFilter', {
       logGroup: props.lambda.logGroup,
