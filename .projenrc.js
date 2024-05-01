@@ -12,6 +12,7 @@ const project = new GemeenteNijmegenCdkLib({
   packageName: projectName,
   depsUpgradeOptions: {
     workflowOptions: {
+      labels: ['auto-merge'],
       branches: ['main'],
     },
   },
