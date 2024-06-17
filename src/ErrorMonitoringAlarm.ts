@@ -1,5 +1,5 @@
 import { RemovalPolicy, Duration } from 'aws-cdk-lib';
-import { Alarm } from 'aws-cdk-lib/aws-cloudwatch';
+import { Alarm, TreatMissingData } from 'aws-cdk-lib/aws-cloudwatch';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { MetricFilter, FilterPattern, IFilterPattern, LogGroup } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
@@ -96,6 +96,7 @@ export class ErrorMonitoringAlarm extends Construct {
       threshold: props.errorRateProps?.alarmThreshold ?? 5,
       alarmName: `increased-error-rate-${this.node.id}${criticality.alarmSuffix()}`,
       alarmDescription: `This alarm triggers if the function ${metricNameBase} - ${this.node.id} is logging more than 5 errors over n minutes.`,
+      treatMissingData: TreatMissingData.NOT_BREACHING,
     });
     alarm.applyRemovalPolicy(RemovalPolicy.DESTROY);
   }
