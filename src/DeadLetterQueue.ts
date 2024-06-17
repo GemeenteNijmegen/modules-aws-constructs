@@ -1,8 +1,9 @@
 import { Duration } from 'aws-cdk-lib';
 import { Alarm, ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
 import { Key } from 'aws-cdk-lib/aws-kms';
-import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { Queue, QueueEncryption, QueueProps } from 'aws-cdk-lib/aws-sqs';
 import { Construct } from 'constructs';
+import { Criticality } from './Criticality/Criticality';
 
 export interface DeadLetterQueueProps {
   /**
@@ -12,7 +13,7 @@ export interface DeadLetterQueueProps {
   /**
    * Key to encrypt the queue
    */
-  readonly kmsKey: Key;
+  readonly kmsKey?: Key;
   /**
    * Retention period
    * @default - 14 days
@@ -24,15 +25,28 @@ export interface DeadLetterQueueProps {
    */
   readonly alarm?: boolean;
   /**
+   * Name to descibe the alarm (alarm level suffic is determined by the alarmCriticality property)
+   */
+  readonly alarmName?: string;
+  /**
    * Alarm Description
    * @default -
    */
   readonly alarmDescription?: string;
+  /**
+   * Alarm criticality
+   * @default critical
+   */
+  readonly alarmCriticality?: Criticality;
+  /**
+   * Queue props
+   */
+  readonly queueOptions?: QueueProps;
 }
 
 export class DeadLetterQueue extends Construct {
 
-  private readonly dlq: Queue;
+  readonly dlq: Queue;
 
   constructor(scope: Construct, id: string, props: DeadLetterQueueProps) {
     super(scope, id);
@@ -41,28 +55,28 @@ export class DeadLetterQueue extends Construct {
       this.dlq = props.dlq;
     } else {
       this.dlq = new Queue(this, 'dlq', {
+        encryption: props.kmsKey ? QueueEncryption.KMS : QueueEncryption.KMS_MANAGED,
         encryptionMasterKey: props.kmsKey,
         retentionPeriod: props.retentionPeriod ?? Duration.days(14),
+        ...props.queueOptions,
       });
     }
 
     if (props.alarm) {
-      this.setupDlqAlarm(id, props);
+      this.setupDlqAlarm(props);
     }
 
   }
 
-  queue() {
-    return this.dlq;
-  }
-
-  private setupDlqAlarm(id: string, props: DeadLetterQueueProps) {
+  private setupDlqAlarm(props: DeadLetterQueueProps) {
+    const level = props.alarmCriticality ? props.alarmCriticality.alarmSuffix() : new Criticality('critical').alarmSuffix();
     new Alarm(this, 'dlq-alarm', {
       metric: this.dlq.metricNumberOfMessagesReceived(),
+      alarmName: `dlq-${props.alarmName}${level}`,
       threshold: 0,
       evaluationPeriods: 1,
       comparisonOperator: ComparisonOperator.GREATER_THAN_THRESHOLD,
-      alarmDescription: props.alarmDescription ?? `Alarm on DLQ for ${id}`,
+      alarmDescription: props.alarmDescription ?? `Alarm on DLQ for ${props.alarmName}`,
     });
   }
 
