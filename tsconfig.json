@@ -34,7 +34,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "test/Criticality.test.ts"  ],
   "exclude": [
     "node_modules"
   ],

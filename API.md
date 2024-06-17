@@ -233,23 +233,13 @@ const deadLetterQueueProps: DeadLetterQueueProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.kmsKey">kmsKey</a></code> | <code>aws-cdk-lib.aws_kms.Key</code> | Key to encrypt the queue. |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.alarm">alarm</a></code> | <code>boolean</code> | Setup alarm. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.alarmCriticality">alarmCriticality</a></code> | <code><a href="#@gemeentenijmegen/aws-constructs.Criticality">Criticality</a></code> | Alarm criticality. |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.alarmDescription">alarmDescription</a></code> | <code>string</code> | Alarm Description. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.alarmName">alarmName</a></code> | <code>string</code> | Name to descibe the alarm (alarm level suffic is determined by the alarmCriticality property). |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.dlq">dlq</a></code> | <code>aws-cdk-lib.aws_sqs.Queue</code> | Bring your own dead letter queue. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.kmsKey">kmsKey</a></code> | <code>aws-cdk-lib.aws_kms.Key</code> | Key to encrypt the queue. |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.retentionPeriod">retentionPeriod</a></code> | <code>aws-cdk-lib.Duration</code> | Retention period. |
-
----
-
-##### `kmsKey`<sup>Required</sup> <a name="kmsKey" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.kmsKey"></a>
-
-```typescript
-public readonly kmsKey: Key;
-```
-
-- *Type:* aws-cdk-lib.aws_kms.Key
-
-Key to encrypt the queue.
 
 ---
 
@@ -266,6 +256,19 @@ Setup alarm.
 
 ---
 
+##### `alarmCriticality`<sup>Optional</sup> <a name="alarmCriticality" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.alarmCriticality"></a>
+
+```typescript
+public readonly alarmCriticality: Criticality;
+```
+
+- *Type:* <a href="#@gemeentenijmegen/aws-constructs.Criticality">Criticality</a>
+- *Default:* critical
+
+Alarm criticality.
+
+---
+
 ##### `alarmDescription`<sup>Optional</sup> <a name="alarmDescription" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.alarmDescription"></a>
 
 ```typescript
@@ -279,6 +282,18 @@ Alarm Description.
 
 ---
 
+##### `alarmName`<sup>Optional</sup> <a name="alarmName" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.alarmName"></a>
+
+```typescript
+public readonly alarmName: string;
+```
+
+- *Type:* string
+
+Name to descibe the alarm (alarm level suffic is determined by the alarmCriticality property).
+
+---
+
 ##### `dlq`<sup>Optional</sup> <a name="dlq" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.dlq"></a>
 
 ```typescript
@@ -288,6 +303,18 @@ public readonly dlq: Queue;
 - *Type:* aws-cdk-lib.aws_sqs.Queue
 
 Bring your own dead letter queue.
+
+---
+
+##### `kmsKey`<sup>Optional</sup> <a name="kmsKey" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.kmsKey"></a>
+
+```typescript
+public readonly kmsKey: Key;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.Key
+
+Key to encrypt the queue.
 
 ---
 
@@ -445,6 +472,66 @@ The filterpattern used.
 ---
 
 ## Classes <a name="Classes" id="Classes"></a>
+
+### Criticality <a name="Criticality" id="@gemeentenijmegen/aws-constructs.Criticality"></a>
+
+#### Initializers <a name="Initializers" id="@gemeentenijmegen/aws-constructs.Criticality.Initializer"></a>
+
+```typescript
+import { Criticality } from '@gemeentenijmegen/aws-constructs'
+
+new Criticality(lvl: string)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.Initializer.parameter.lvl">lvl</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `lvl`<sup>Required</sup> <a name="lvl" id="@gemeentenijmegen/aws-constructs.Criticality.Initializer.parameter.lvl"></a>
+
+- *Type:* string
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.alarmSuffix">alarmSuffix</a></code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.decrease">decrease</a></code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.increase">increase</a></code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.toString">toString</a></code> | *No description.* |
+
+---
+
+##### `alarmSuffix` <a name="alarmSuffix" id="@gemeentenijmegen/aws-constructs.Criticality.alarmSuffix"></a>
+
+```typescript
+public alarmSuffix(): string
+```
+
+##### `decrease` <a name="decrease" id="@gemeentenijmegen/aws-constructs.Criticality.decrease"></a>
+
+```typescript
+public decrease(): Criticality
+```
+
+##### `increase` <a name="increase" id="@gemeentenijmegen/aws-constructs.Criticality.increase"></a>
+
+```typescript
+public increase(): Criticality
+```
+
+##### `toString` <a name="toString" id="@gemeentenijmegen/aws-constructs.Criticality.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+
+
 
 ### PermissionsBoundaryAspect <a name="PermissionsBoundaryAspect" id="@gemeentenijmegen/aws-constructs.PermissionsBoundaryAspect"></a>
 
