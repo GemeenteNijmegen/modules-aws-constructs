@@ -53,7 +53,6 @@ new DeadLetterQueue(scope: Construct, id: string, props: DeadLetterQueueProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueue.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueue.queue">queue</a></code> | *No description.* |
 
 ---
 
@@ -64,12 +63,6 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
-
-##### `queue` <a name="queue" id="@gemeentenijmegen/aws-constructs.DeadLetterQueue.queue"></a>
-
-```typescript
-public queue(): Queue
-```
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -102,6 +95,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueue.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueue.property.dlq">dlq</a></code> | <code>aws-cdk-lib.aws_sqs.Queue</code> | *No description.* |
 
 ---
 
@@ -114,6 +108,16 @@ public readonly node: Node;
 - *Type:* constructs.Node
 
 The tree node.
+
+---
+
+##### `dlq`<sup>Required</sup> <a name="dlq" id="@gemeentenijmegen/aws-constructs.DeadLetterQueue.property.dlq"></a>
+
+```typescript
+public readonly dlq: Queue;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.Queue
 
 ---
 
