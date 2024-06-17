@@ -239,6 +239,7 @@ const deadLetterQueueProps: DeadLetterQueueProps = { ... }
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.alarmName">alarmName</a></code> | <code>string</code> | Name to descibe the alarm (alarm level suffic is determined by the alarmCriticality property). |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.dlq">dlq</a></code> | <code>aws-cdk-lib.aws_sqs.Queue</code> | Bring your own dead letter queue. |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.kmsKey">kmsKey</a></code> | <code>aws-cdk-lib.aws_kms.Key</code> | Key to encrypt the queue. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.queueOptions">queueOptions</a></code> | <code>aws-cdk-lib.aws_sqs.QueueProps</code> | Queue props. |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.retentionPeriod">retentionPeriod</a></code> | <code>aws-cdk-lib.Duration</code> | Retention period. |
 
 ---
@@ -315,6 +316,18 @@ public readonly kmsKey: Key;
 - *Type:* aws-cdk-lib.aws_kms.Key
 
 Key to encrypt the queue.
+
+---
+
+##### `queueOptions`<sup>Optional</sup> <a name="queueOptions" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps.property.queueOptions"></a>
+
+```typescript
+public readonly queueOptions: QueueProps;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.QueueProps
+
+Queue props.
 
 ---
 
