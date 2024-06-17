@@ -1,7 +1,7 @@
 import { Duration } from 'aws-cdk-lib';
 import { Alarm, ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
 import { Key } from 'aws-cdk-lib/aws-kms';
-import { Queue, QueueEncryption } from 'aws-cdk-lib/aws-sqs';
+import { Queue, QueueEncryption, QueueProps } from 'aws-cdk-lib/aws-sqs';
 import { Construct } from 'constructs';
 import { Criticality } from './Criticality/Criticality';
 
@@ -38,6 +38,10 @@ export interface DeadLetterQueueProps {
    * @default critical
    */
   readonly alarmCriticality?: Criticality;
+  /**
+   * Queue props
+   */
+  readonly queueOptions?: QueueProps;
 }
 
 export class DeadLetterQueue extends Construct {
@@ -54,6 +58,7 @@ export class DeadLetterQueue extends Construct {
         encryption: props.kmsKey ? QueueEncryption.KMS : QueueEncryption.KMS_MANAGED,
         encryptionMasterKey: props.kmsKey,
         retentionPeriod: props.retentionPeriod ?? Duration.days(14),
+        ...props.queueOptions,
       });
     }
 
