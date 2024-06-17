@@ -1,6 +1,11 @@
 export type CriticalityLevel = 'low' | 'medium' | 'high' | 'critical';
 
 export class Criticality {
+
+  static fromString(criticality: CriticalityLevel) {
+    return new Criticality(criticality);
+  }
+
   private lvl: CriticalityLevel;
   constructor(lvl: CriticalityLevel) {
     this.lvl = lvl;
