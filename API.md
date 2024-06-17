@@ -457,8 +457,36 @@ const errorRateProps: ErrorRateProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.ErrorRateProps.property.alarmEvaluationPeriod">alarmEvaluationPeriod</a></code> | <code>aws-cdk-lib.Duration</code> | Evaluation period size. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.ErrorRateProps.property.alarmEvaluationPeriods">alarmEvaluationPeriods</a></code> | <code>number</code> | Evaluation periods (how many periods should be evaluated before an alarm is raised). |
 | <code><a href="#@gemeentenijmegen/aws-constructs.ErrorRateProps.property.alarmThreshold">alarmThreshold</a></code> | <code>number</code> | Alarm Threshold. |
 | <code><a href="#@gemeentenijmegen/aws-constructs.ErrorRateProps.property.filterPattern">filterPattern</a></code> | <code>aws-cdk-lib.aws_logs.IFilterPattern</code> | The filterpattern used. |
+
+---
+
+##### `alarmEvaluationPeriod`<sup>Optional</sup> <a name="alarmEvaluationPeriod" id="@gemeentenijmegen/aws-constructs.ErrorRateProps.property.alarmEvaluationPeriod"></a>
+
+```typescript
+public readonly alarmEvaluationPeriod: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+- *Default:* 5 min
+
+Evaluation period size.
+
+---
+
+##### `alarmEvaluationPeriods`<sup>Optional</sup> <a name="alarmEvaluationPeriods" id="@gemeentenijmegen/aws-constructs.ErrorRateProps.property.alarmEvaluationPeriods"></a>
+
+```typescript
+public readonly alarmEvaluationPeriods: number;
+```
+
+- *Type:* number
+- *Default:* 3
+
+Evaluation periods (how many periods should be evaluated before an alarm is raised).
 
 ---
 
