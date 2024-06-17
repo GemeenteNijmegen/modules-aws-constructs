@@ -46,7 +46,7 @@ export interface DeadLetterQueueProps {
 
 export class DeadLetterQueue extends Construct {
 
-  private readonly dlq: Queue;
+  readonly dlq: Queue;
 
   constructor(scope: Construct, id: string, props: DeadLetterQueueProps) {
     super(scope, id);
@@ -66,10 +66,6 @@ export class DeadLetterQueue extends Construct {
       this.setupDlqAlarm(props);
     }
 
-  }
-
-  queue() {
-    return this.dlq;
   }
 
   private setupDlqAlarm(props: DeadLetterQueueProps) {
