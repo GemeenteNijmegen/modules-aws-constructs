@@ -3,6 +3,7 @@ import { Alarm } from 'aws-cdk-lib/aws-cloudwatch';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { MetricFilter, FilterPattern, IFilterPattern, LogGroup } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
+import { Criticality, CriticalityLevel } from './Criticality/Criticality';
 
 
 /**
@@ -40,7 +41,7 @@ export interface ErrorMonitoringAlarmProps {
  * @example 'low' | 'medium' | 'high' | 'critical'
  * @default 'low'
  */
-  readonly criticality?: 'low' | 'medium' | 'high' | 'critical';
+  readonly criticality?: CriticalityLevel | Criticality;
 
   /**
  * Left empty, the id will be used to set the metricNameSpace base
@@ -80,6 +81,12 @@ export class ErrorMonitoringAlarm extends Construct {
     });
     errorMetricFilter.applyRemovalPolicy(RemovalPolicy.DESTROY);
 
+    let criticality = new Criticality('low');
+    if (props.criticality && props.criticality instanceof Criticality) {
+      criticality = props.criticality;
+    } else if (props.criticality) {
+      criticality = Criticality.fromString(props.criticality);
+    }
     const alarm = new Alarm(this, `${metricNameBase}-${this.node.id}-alarm`, {
       metric: errorMetricFilter.metric({
         statistic: 'sum',
@@ -87,7 +94,7 @@ export class ErrorMonitoringAlarm extends Construct {
       }),
       evaluationPeriods: 3,
       threshold: props.errorRateProps?.alarmThreshold ?? 5,
-      alarmName: `increased-error-rate-${this.node.id}-${props.criticality ?? 'low'}-lvl`,
+      alarmName: `increased-error-rate-${this.node.id}${criticality.alarmSuffix()}`,
       alarmDescription: `This alarm triggers if the function ${metricNameBase} - ${this.node.id} is logging more than 5 errors over n minutes.`,
     });
     alarm.applyRemovalPolicy(RemovalPolicy.DESTROY);
