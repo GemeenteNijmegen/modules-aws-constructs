@@ -24,6 +24,16 @@ export interface ErrorRateProps {
    * @default 5
    */
   readonly alarmThreshold?: number;
+  /**
+   * Evaluation periods (how many periods should be evaluated before an alarm is raised)
+   * @default 3
+   */
+  readonly alarmEvaluationPeriods?: number;
+  /**
+   * Evaluation period size
+   * @default 5 min
+   */
+  readonly alarmEvaluationPeriod?: Duration;
 }
 export interface ErrorMonitoringAlarmProps {
   /**
@@ -90,9 +100,9 @@ export class ErrorMonitoringAlarm extends Construct {
     const alarm = new Alarm(this, `${metricNameBase}-${this.node.id}-alarm`, {
       metric: errorMetricFilter.metric({
         statistic: 'sum',
-        period: Duration.minutes(5),
+        period: props.errorRateProps?.alarmEvaluationPeriod ?? Duration.minutes(5),
       }),
-      evaluationPeriods: 3,
+      evaluationPeriods: props.errorRateProps?.alarmEvaluationPeriods ?? 3,
       threshold: props.errorRateProps?.alarmThreshold ?? 5,
       alarmName: `increased-error-rate-${this.node.id}${criticality.alarmSuffix()}`,
       alarmDescription: `This alarm triggers if the function ${metricNameBase} - ${this.node.id} is logging more than 5 errors over n minutes.`,
