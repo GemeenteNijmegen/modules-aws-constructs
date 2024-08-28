@@ -28,7 +28,7 @@ export class GemeenteNijmegenVpc extends Construct {
       privateSubnetRouteTableIds: [1, 2, 3].map(i => StringParameter.valueForStringParameter(this, `/landingzone/vpc/route-table-private-subnet-${i}-id`)),
       privateSubnetIds: [1, 2, 3].map(i => StringParameter.valueForStringParameter(this, `/landingzone/vpc/private-subnet-${i}-id`)),
       // Public subnets
-      publicSubnetRouteTableIds: Array(3).fill(StringParameter.valueForStringParameter(this, '/landingzone/landing-zone/vpc/route-table-public-subnets-id')),
+      publicSubnetRouteTableIds: Array(3).fill(StringParameter.valueForStringParameter(this, '/landingzone/vpc/route-table-public-subnets-id')),
       publicSubnetIds: [1, 2, 3].map(i => StringParameter.valueForStringParameter(this, `/landingzone/vpc/public-subnet-${i}-id`)),
       // Data subnets
       isolatedSubnetRouteTableIds: [1, 2, 3].map(i => StringParameter.valueForStringParameter(this, `/landingzone/vpc/route-table-data-subnet-${i}-id`)),
