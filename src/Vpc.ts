@@ -3,9 +3,14 @@ import { IVpc, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
 
+export interface GemeenteNijmegenVpcProps {
+  isSandbox?: boolean;
+}
+
 export class GemeenteNijmegenVpc extends Construct {
 
   readonly vpc: IVpc;
+  private readonly props?: GemeenteNijmegenVpcProps;
 
   /**
    * Construct to import a VPC using Gemeente Nijmegen
@@ -13,15 +18,18 @@ export class GemeenteNijmegenVpc extends Construct {
    * @param scope
    * @param id
    */
-  constructor(scope: Construct, id: string) {
+  constructor(scope: Construct, id: string, props?: GemeenteNijmegenVpcProps) {
     super(scope, id);
+    this.props = props;
     this.vpc = this.setupVpc();
   }
 
 
   private setupVpc() {
-    // Import vpc config
-    const publicSubnetRouteTableIds = Array(3).fill(StringParameter.valueForStringParameter(this, '/platformunited/landing-zone/vpc/route-table-public-subnets-id'));
+    // Somehow our landingzone uses the platform unitex prefix in sandboxes...
+    const prefix = this.props?.isSandbox ? 'platformunited' : 'landingzone';
+    const param = `/${prefix}/landing-zone/vpc/route-table-public-subnets-id`;
+    const publicSubnetRouteTableIds = Array(3).fill(StringParameter.valueForStringParameter(this, param));
 
     //VPC setup for ECS cluster
     const vpc = Vpc.fromVpcAttributes(this, 'vpc', {
