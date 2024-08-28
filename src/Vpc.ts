@@ -18,10 +18,7 @@ export class GemeenteNijmegenVpc extends Construct {
     this.vpc = this.setupVpc();
   }
 
-
   private setupVpc() {
-    // Import vpc config
-    const publicSubnetRouteTableIds = Array(3).fill(StringParameter.valueForStringParameter(this, '/platformunited/landing-zone/vpc/route-table-public-subnets-id'));
 
     //VPC setup for ECS cluster
     const vpc = Vpc.fromVpcAttributes(this, 'vpc', {
@@ -31,7 +28,7 @@ export class GemeenteNijmegenVpc extends Construct {
       privateSubnetRouteTableIds: [1, 2, 3].map(i => StringParameter.valueForStringParameter(this, `/landingzone/vpc/route-table-private-subnet-${i}-id`)),
       privateSubnetIds: [1, 2, 3].map(i => StringParameter.valueForStringParameter(this, `/landingzone/vpc/private-subnet-${i}-id`)),
       // Public subnets
-      publicSubnetRouteTableIds: publicSubnetRouteTableIds,
+      publicSubnetRouteTableIds: Array(3).fill(StringParameter.valueForStringParameter(this, '/landingzone/landing-zone/vpc/route-table-public-subnets-id')),
       publicSubnetIds: [1, 2, 3].map(i => StringParameter.valueForStringParameter(this, `/landingzone/vpc/public-subnet-${i}-id`)),
       // Data subnets
       isolatedSubnetRouteTableIds: [1, 2, 3].map(i => StringParameter.valueForStringParameter(this, `/landingzone/vpc/route-table-data-subnet-${i}-id`)),
