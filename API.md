@@ -221,6 +221,109 @@ The tree node.
 ---
 
 
+### GemeenteNijmegenVpc <a name="GemeenteNijmegenVpc" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc"></a>
+
+#### Initializers <a name="Initializers" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.Initializer"></a>
+
+```typescript
+import { GemeenteNijmegenVpc } from '@gemeentenijmegen/aws-constructs'
+
+new GemeenteNijmegenVpc(scope: Construct, id: string)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.isConstruct"></a>
+
+```typescript
+import { GemeenteNijmegenVpc } from '@gemeentenijmegen/aws-constructs'
+
+GemeenteNijmegenVpc.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `vpc`<sup>Required</sup> <a name="vpc" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.property.vpc"></a>
+
+```typescript
+public readonly vpc: IVpc;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.IVpc
+
+---
+
+
 ## Structs <a name="Structs" id="Structs"></a>
 
 ### DeadLetterQueueProps <a name="DeadLetterQueueProps" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps"></a>
