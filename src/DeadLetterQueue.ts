@@ -1,6 +1,6 @@
 import { Duration } from 'aws-cdk-lib';
 import { Alarm, ComparisonOperator } from 'aws-cdk-lib/aws-cloudwatch';
-import { Key } from 'aws-cdk-lib/aws-kms';
+import { IKey } from 'aws-cdk-lib/aws-kms';
 import { Queue, QueueEncryption, QueueProps } from 'aws-cdk-lib/aws-sqs';
 import { Construct } from 'constructs';
 import { Criticality } from './Criticality/Criticality';
@@ -13,7 +13,7 @@ export interface DeadLetterQueueProps {
   /**
    * Key to encrypt the queue
    */
-  readonly kmsKey?: Key;
+  readonly kmsKey?: IKey;
   /**
    * Retention period
    * @default - 14 days
