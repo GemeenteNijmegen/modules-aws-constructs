@@ -70,9 +70,10 @@ export class DeadLetterQueue extends Construct {
 
   private setupDlqAlarm(props: DeadLetterQueueProps) {
     const level = props.alarmCriticality ? props.alarmCriticality.alarmSuffix() : new Criticality('critical').alarmSuffix();
+    const name = props.alarmName ?? `${this.dlq.queueName}-not-empty`;
     new Alarm(this, 'dlq-alarm', {
       metric: this.dlq.metricApproximateNumberOfMessagesVisible(),
-      alarmName: `dlq-${props.alarmName}${level}`,
+      alarmName: `dlq-${name}${level}`,
       threshold: 0,
       evaluationPeriods: 1,
       comparisonOperator: ComparisonOperator.GREATER_THAN_THRESHOLD,
