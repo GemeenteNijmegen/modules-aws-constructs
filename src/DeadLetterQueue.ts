@@ -62,7 +62,7 @@ export class DeadLetterQueue extends Construct {
       });
     }
 
-    if (props.alarm) {
+    if (props.alarm !== false) {
       this.setupDlqAlarm(props);
     }
 
