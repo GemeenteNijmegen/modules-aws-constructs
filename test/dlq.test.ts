@@ -30,6 +30,27 @@ test('Constrcution of dlq with alarm', () => {
 });
 
 
+test('Constrcution of dlq with default alarm', () => {
+  class DummyStack extends Stack {
+    constructor(scope: Construct, id: string) {
+      super(scope, id);
+      const key = new Key(this, 'key');
+      new DeadLetterQueue(this, 'dlq', {
+        kmsKey: key,
+      });
+    }
+  }
+  const app = new App();
+  const stack = new DummyStack(app, 'dummy-stack');
+  const template = Template.fromStack(stack);
+
+  const queues = template.findResources('AWS::SQS::Queue');
+  const alarms = template.findResources('AWS::CloudWatch::Alarm');
+  expect(Object.keys(queues)).toHaveLength(1);
+  expect(Object.keys(alarms)).toHaveLength(1);
+});
+
+
 test('Constrcution of dlq without alarm', () => {
   class DummyStack extends Stack {
     constructor(scope: Construct, id: string) {
