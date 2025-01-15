@@ -31,7 +31,7 @@ export class PermissionsBoundaryAspect implements IAspect {
 
   public visit(node: IConstruct): void {
 
-    if (node instanceof CfnResource && node.cfnResourceType == 'AWS::IAM::Role') {
+    if (node instanceof CfnResource && (node.cfnResourceType == 'AWS::IAM::Role' || node.cfnResourceType == 'AWS::IAM::User')) {
       const stack = Stack.of(node);
       this.addPermissionBoundary(node, stack);
     }
