@@ -455,7 +455,7 @@ const errorMonitoringAlarmProps: ErrorMonitoringAlarmProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarmProps.property.criticality">criticality</a></code> | <code><a href="#@gemeentenijmegen/aws-constructs.Criticality">Criticality</a> \| string</code> | Criticality level. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarmProps.property.criticality">criticality</a></code> | <code>string \| <a href="#@gemeentenijmegen/aws-constructs.Criticality">Criticality</a></code> | Criticality level. |
 | <code><a href="#@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarmProps.property.errorRateProps">errorRateProps</a></code> | <code><a href="#@gemeentenijmegen/aws-constructs.ErrorRateProps">ErrorRateProps</a></code> | All the optional properties for the errorRateMetric and Alarm. |
 | <code><a href="#@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarmProps.property.lambda">lambda</a></code> | <code>aws-cdk-lib.aws_lambda.Function</code> | The lambda the metrics are added to. |
 | <code><a href="#@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarmProps.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.LogGroup</code> | The log group the metrics are added to. |
@@ -466,10 +466,10 @@ const errorMonitoringAlarmProps: ErrorMonitoringAlarmProps = { ... }
 ##### `criticality`<sup>Optional</sup> <a name="criticality" id="@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarmProps.property.criticality"></a>
 
 ```typescript
-public readonly criticality: Criticality | string;
+public readonly criticality: string | Criticality;
 ```
 
-- *Type:* <a href="#@gemeentenijmegen/aws-constructs.Criticality">Criticality</a> | string
+- *Type:* string | <a href="#@gemeentenijmegen/aws-constructs.Criticality">Criticality</a>
 - *Default:* 'low'
 
 Criticality level.
