@@ -1,7 +1,7 @@
-import { RemovalPolicy, Duration } from 'aws-cdk-lib';
+import { Duration, RemovalPolicy } from 'aws-cdk-lib';
 import { Alarm, TreatMissingData } from 'aws-cdk-lib/aws-cloudwatch';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import { MetricFilter, FilterPattern, IFilterPattern, LogGroup } from 'aws-cdk-lib/aws-logs';
+import { FilterPattern, IFilterPattern, ILogGroup, MetricFilter } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
 import { Criticality, CriticalityLevel } from './Criticality/Criticality';
 
@@ -44,7 +44,7 @@ export interface ErrorMonitoringAlarmProps {
   /**
    * The log group the metrics are added to
    */
-  readonly logGroup?: LogGroup;
+  readonly logGroup?: ILogGroup;
 
   /**
  * Criticality level
