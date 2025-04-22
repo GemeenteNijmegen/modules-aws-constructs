@@ -637,10 +637,10 @@ new Criticality(lvl: string)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.alarmSuffix">alarmSuffix</a></code> | *No description.* |
-| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.decrease">decrease</a></code> | *No description.* |
-| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.increase">increase</a></code> | *No description.* |
-| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.toString">toString</a></code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.alarmSuffix">alarmSuffix</a></code> | Creates the appropriate suffix for alarms to be picked up by the landingzone monitoring. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.decrease">decrease</a></code> | Decreases the criticality by one. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.increase">increase</a></code> | Increases the criticality by one. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.Criticality.toString">toString</a></code> | Convert the level to a string. |
 
 ---
 
@@ -650,11 +650,17 @@ new Criticality(lvl: string)
 public alarmSuffix(): string
 ```
 
+Creates the appropriate suffix for alarms to be picked up by the landingzone monitoring.
+
 ##### `decrease` <a name="decrease" id="@gemeentenijmegen/aws-constructs.Criticality.decrease"></a>
 
 ```typescript
 public decrease(): Criticality
 ```
+
+Decreases the criticality by one.
+
+Can be used as: `criticality.decrease().alarmSuffix()`
 
 ##### `increase` <a name="increase" id="@gemeentenijmegen/aws-constructs.Criticality.increase"></a>
 
@@ -662,11 +668,17 @@ public decrease(): Criticality
 public increase(): Criticality
 ```
 
+Increases the criticality by one.
+
+Can be used as: `criticality.increase().alarmSuffix()`
+
 ##### `toString` <a name="toString" id="@gemeentenijmegen/aws-constructs.Criticality.toString"></a>
 
 ```typescript
 public toString(): string
 ```
+
+Convert the level to a string.
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
