@@ -40,17 +40,14 @@ export interface QueueWithDlqProps {
   /**
    * Customize the main queue properties. Certain props (fifo, encryption, deadLetterQueue, retentionPeriod) are overridden.
    */
-  readonly queueProps?: Omit<
-    QueueProps,
-    | 'fifo'
-    | 'encryption'
-    | 'encryptionMasterKey'
-    | 'deadLetterQueue'
-    | 'encryptionScope'
-    | 'retentionPeriod'
-  >;
+  readonly queueProps?: QueueProps;
+  /**
+   * Customize the dlq queue properties. Certain props (fifo, encryption, deadLetterQueue, retentionPeriod) are overridden.
+   */
+  readonly dlqQueueProps?: QueueProps;
   /**
    * Optional: IAM Role which consumes from the queue; if provided, consume grant will be applied
+   * Another option is to get the queue or dlq from the construct and grant resources/roles on them
    */
   readonly role?: Role;
   /**
@@ -80,7 +77,6 @@ export interface QueueWithDlqProps {
  *
  * Required props: `identifier` and `key`. Optional props customize FIFO, retention, maxReceiveCount, IAM grants, and SSM exports.
  *
- * @example
  * ```ts
  *
  *   const myQueueWithDlq = new QueueWithDlq(this, 'MyQueue', {
@@ -90,6 +86,7 @@ export interface QueueWithDlqProps {
  *   });
  *   const mainQueue = myQueueWithDlq.queue;
  *   const deadLetterQueue = myQueueWithDlq.dlq;
+ *   mainQueue.grantSendMessages(somelambda)
  * ```
  */
 export class QueueWithDlq extends Construct {
@@ -110,7 +107,7 @@ export class QueueWithDlq extends Construct {
       const dlqId = `${props.identifier}-dlq`;
       const deadLetter = new DeadLetterQueue(this, dlqId, {
         alarmCriticality: props.criticality,
-        queueOptions: { fifo: isFifo },
+        queueOptions: { fifo: isFifo, ...props.dlqQueueProps }, // fifo setting in queueProps overrides fifo from props if needed
         kmsKey: props.kmsKey,
       });
       this.dlq = deadLetter.dlq;
@@ -137,7 +134,9 @@ export class QueueWithDlq extends Construct {
       }
     }
 
-
+    /**
+     * Ease of settings params with the queue arn into a param with one prop
+     */
     if (props.ssmQueueArnParamName) {
       new StringParameter(this, `${props.identifier}-queue-arn-param`, {
         parameterName: props.ssmQueueArnParamName,

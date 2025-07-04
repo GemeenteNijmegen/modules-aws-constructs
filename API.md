@@ -314,6 +314,143 @@ public readonly vpc: IVpc;
 ---
 
 
+### QueueWithDlq <a name="QueueWithDlq" id="@gemeentenijmegen/aws-constructs.QueueWithDlq"></a>
+
+A reusable SQS queue with an associated dead-letter queue (DLQ).
+
+Required props: `identifier` and `key`. Optional props customize FIFO, retention, maxReceiveCount, IAM grants, and SSM exports.
+
+```ts
+
+  const myQueueWithDlq = new QueueWithDlq(this, 'MyQueue', {
+    identifier: 'my-process',
+    key: myKey,
+    role: myRole,
+  });
+  const mainQueue = myQueueWithDlq.queue;
+  const deadLetterQueue = myQueueWithDlq.dlq;
+  mainQueue.grantSendMessages(somelambda)
+```
+
+#### Initializers <a name="Initializers" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.Initializer"></a>
+
+```typescript
+import { QueueWithDlq } from '@gemeentenijmegen/aws-constructs'
+
+new QueueWithDlq(scope: Construct, id: string, props: QueueWithDlqProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.Initializer.parameter.props">props</a></code> | <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps">QueueWithDlqProps</a></code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps">QueueWithDlqProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.toString">toString</a></code> | Returns a string representation of this construct. |
+
+---
+
+##### `toString` <a name="toString" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.isConstruct"></a>
+
+```typescript
+import { QueueWithDlq } from '@gemeentenijmegen/aws-constructs'
+
+QueueWithDlq.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+###### `x`<sup>Required</sup> <a name="x" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.property.dlq">dlq</a></code> | <code>aws-cdk-lib.aws_sqs.Queue</code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.property.queue">queue</a></code> | <code>aws-cdk-lib.aws_sqs.Queue</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `dlq`<sup>Required</sup> <a name="dlq" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.property.dlq"></a>
+
+```typescript
+public readonly dlq: Queue;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.Queue
+
+---
+
+##### `queue`<sup>Required</sup> <a name="queue" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.property.queue"></a>
+
+```typescript
+public readonly queue: Queue;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.Queue
+
+---
+
+
 ## Structs <a name="Structs" id="Structs"></a>
 
 ### DeadLetterQueueProps <a name="DeadLetterQueueProps" id="@gemeentenijmegen/aws-constructs.DeadLetterQueueProps"></a>
@@ -606,6 +743,235 @@ public readonly filterPattern: IFilterPattern;
 - *Default:* FilterPattern.anyTerm('ERROR')
 
 The filterpattern used.
+
+---
+
+### QueueWithDlqProps <a name="QueueWithDlqProps" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps"></a>
+
+#### Initializer <a name="Initializer" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.Initializer"></a>
+
+```typescript
+import { QueueWithDlqProps } from '@gemeentenijmegen/aws-constructs'
+
+const queueWithDlqProps: QueueWithDlqProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.identifier">identifier</a></code> | <code>string</code> | Base identifier for constructs (prefer lowercase, alphanumeric and hyphens) used to name child resources e.g. 'esb-delivery'. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.kmsKey">kmsKey</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | Encryption key for both primary queue and DLQ. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.criticality">criticality</a></code> | <code><a href="#@gemeentenijmegen/aws-constructs.Criticality">Criticality</a></code> | Optional: priority of the DLQ alarm. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.dlq">dlq</a></code> | <code>aws-cdk-lib.aws_sqs.Queue</code> | Optional: existing DLQ queue to reuse; |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.dlqQueueProps">dlqQueueProps</a></code> | <code>aws-cdk-lib.aws_sqs.QueueProps</code> | Customize the dlq queue properties. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.fifo">fifo</a></code> | <code>boolean</code> | Use FIFO queue? |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.grantDlqSend">grantDlqSend</a></code> | <code>boolean</code> | Optional: grant send permissions to the provided role on the DLQ. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.maxReceiveCount">maxReceiveCount</a></code> | <code>number</code> | Optional max receive count for DLQ redrive policy. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.queueProps">queueProps</a></code> | <code>aws-cdk-lib.aws_sqs.QueueProps</code> | Customize the main queue properties. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.retentionPeriod">retentionPeriod</a></code> | <code>aws-cdk-lib.Duration</code> | Optional retention period for the main queue. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.Role</code> | Optional: IAM Role which consumes from the queue; |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.ssmDlqArnParamDescription">ssmDlqArnParamDescription</a></code> | <code>string</code> | Optional: description for the DLQ ARN SSM parameter. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.ssmDlqArnParamName">ssmDlqArnParamName</a></code> | <code>string</code> | Optional: SSM parameter name to store the DLQ ARN. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.ssmQueueArnParamDescription">ssmQueueArnParamDescription</a></code> | <code>string</code> | Optional: description for the main queue ARN SSM parameter. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.ssmQueueArnParamName">ssmQueueArnParamName</a></code> | <code>string</code> | Optional: SSM parameter name to store the main queue ARN. |
+
+---
+
+##### `identifier`<sup>Required</sup> <a name="identifier" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.identifier"></a>
+
+```typescript
+public readonly identifier: string;
+```
+
+- *Type:* string
+
+Base identifier for constructs (prefer lowercase, alphanumeric and hyphens) used to name child resources e.g. 'esb-delivery'.
+
+---
+
+##### `kmsKey`<sup>Required</sup> <a name="kmsKey" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.kmsKey"></a>
+
+```typescript
+public readonly kmsKey: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+
+Encryption key for both primary queue and DLQ.
+
+---
+
+##### `criticality`<sup>Optional</sup> <a name="criticality" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.criticality"></a>
+
+```typescript
+public readonly criticality: Criticality;
+```
+
+- *Type:* <a href="#@gemeentenijmegen/aws-constructs.Criticality">Criticality</a>
+
+Optional: priority of the DLQ alarm.
+
+---
+
+##### `dlq`<sup>Optional</sup> <a name="dlq" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.dlq"></a>
+
+```typescript
+public readonly dlq: Queue;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.Queue
+
+Optional: existing DLQ queue to reuse;
+
+if provided, no new DLQ is created
+
+---
+
+##### `dlqQueueProps`<sup>Optional</sup> <a name="dlqQueueProps" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.dlqQueueProps"></a>
+
+```typescript
+public readonly dlqQueueProps: QueueProps;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.QueueProps
+
+Customize the dlq queue properties.
+
+Certain props (fifo, encryption, deadLetterQueue, retentionPeriod) are overridden.
+
+---
+
+##### `fifo`<sup>Optional</sup> <a name="fifo" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.fifo"></a>
+
+```typescript
+public readonly fifo: boolean;
+```
+
+- *Type:* boolean
+
+Use FIFO queue?
+
+Defaults to true
+
+---
+
+##### `grantDlqSend`<sup>Optional</sup> <a name="grantDlqSend" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.grantDlqSend"></a>
+
+```typescript
+public readonly grantDlqSend: boolean;
+```
+
+- *Type:* boolean
+
+Optional: grant send permissions to the provided role on the DLQ.
+
+Defaults to false.
+
+---
+
+##### `maxReceiveCount`<sup>Optional</sup> <a name="maxReceiveCount" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.maxReceiveCount"></a>
+
+```typescript
+public readonly maxReceiveCount: number;
+```
+
+- *Type:* number
+
+Optional max receive count for DLQ redrive policy.
+
+Defaults to 3.
+
+---
+
+##### `queueProps`<sup>Optional</sup> <a name="queueProps" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.queueProps"></a>
+
+```typescript
+public readonly queueProps: QueueProps;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.QueueProps
+
+Customize the main queue properties.
+
+Certain props (fifo, encryption, deadLetterQueue, retentionPeriod) are overridden.
+
+---
+
+##### `retentionPeriod`<sup>Optional</sup> <a name="retentionPeriod" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.retentionPeriod"></a>
+
+```typescript
+public readonly retentionPeriod: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+
+Optional retention period for the main queue.
+
+Defaults to 14 days.
+
+---
+
+##### `role`<sup>Optional</sup> <a name="role" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.role"></a>
+
+```typescript
+public readonly role: Role;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.Role
+
+Optional: IAM Role which consumes from the queue;
+
+if provided, consume grant will be applied
+Another option is to get the queue or dlq from the construct and grant resources/roles on them
+
+---
+
+##### `ssmDlqArnParamDescription`<sup>Optional</sup> <a name="ssmDlqArnParamDescription" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.ssmDlqArnParamDescription"></a>
+
+```typescript
+public readonly ssmDlqArnParamDescription: string;
+```
+
+- *Type:* string
+
+Optional: description for the DLQ ARN SSM parameter.
+
+---
+
+##### `ssmDlqArnParamName`<sup>Optional</sup> <a name="ssmDlqArnParamName" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.ssmDlqArnParamName"></a>
+
+```typescript
+public readonly ssmDlqArnParamName: string;
+```
+
+- *Type:* string
+
+Optional: SSM parameter name to store the DLQ ARN.
+
+---
+
+##### `ssmQueueArnParamDescription`<sup>Optional</sup> <a name="ssmQueueArnParamDescription" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.ssmQueueArnParamDescription"></a>
+
+```typescript
+public readonly ssmQueueArnParamDescription: string;
+```
+
+- *Type:* string
+
+Optional: description for the main queue ARN SSM parameter.
+
+---
+
+##### `ssmQueueArnParamName`<sup>Optional</sup> <a name="ssmQueueArnParamName" id="@gemeentenijmegen/aws-constructs.QueueWithDlqProps.property.ssmQueueArnParamName"></a>
+
+```typescript
+public readonly ssmQueueArnParamName: string;
+```
+
+- *Type:* string
+
+Optional: SSM parameter name to store the main queue ARN.
 
 ---
 
