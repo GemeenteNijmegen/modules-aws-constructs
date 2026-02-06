@@ -55,4 +55,5 @@ tsconfig.json
 !/API.md
 !/.github/workflows/emergency.yml
 !/.github/workflows/auto-merge.yml
+!/.nvmrc
 !/.projenrc.js
