@@ -43,6 +43,7 @@ new DeadLetterQueue(scope: Construct, id: string, props: DeadLetterQueueProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueue.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.DeadLetterQueue.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -53,6 +54,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@gemeentenijmegen/aws-constructs.DeadLetterQueue.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@gemeentenijmegen/aws-constructs.DeadLetterQueue.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -167,6 +189,7 @@ new ErrorMonitoringAlarm(scope: Construct, id: string, props: ErrorMonitoringAla
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarm.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarm.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -177,6 +200,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarm.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@gemeentenijmegen/aws-constructs.ErrorMonitoringAlarm.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -273,6 +317,7 @@ new GemeenteNijmegenVpc(scope: Construct, id: string)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -283,6 +328,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@gemeentenijmegen/aws-constructs.GemeenteNijmegenVpc.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -413,6 +479,7 @@ new QueueWithDlq(scope: Construct, id: string, props: QueueWithDlqProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@gemeentenijmegen/aws-constructs.QueueWithDlq.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -423,6 +490,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@gemeentenijmegen/aws-constructs.QueueWithDlq.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
