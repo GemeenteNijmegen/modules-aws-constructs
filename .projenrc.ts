@@ -4,7 +4,7 @@ const projectName = '@gemeentenijmegen/aws-constructs';
 
 const project = new GemeenteNijmegenCdkLib({
   cdkVersion: '2.28.0',
-  constructsVersion: '10.6.0',
+  constructsVersion: '10.8.1',
   author: 'Gemeente Nijmegen',
   authorAddress: 'devops@nijmegen.nl',
   repository: 'https://github.com/GemeenteNijmegen/modules-aws-constructs.git',
