@@ -22,6 +22,7 @@ export class GemeenteNijmegenVpc extends Construct {
 
     //VPC setup for ECS cluster
     const vpc = Vpc.fromVpcAttributes(this, 'vpc', {
+      vpcCidrBlock: StringParameter.valueForStringParameter(this, '/landingzone/vpc/cidr'),
       vpcId: StringParameter.valueForStringParameter(this, '/landingzone/vpc/vpc-id'),
       availabilityZones: [0, 1, 2].map(i => Fn.select(i, Fn.getAzs(Aws.REGION))),
       // Private subnets
